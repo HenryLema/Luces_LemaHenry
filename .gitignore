@@ -1,0 +1,81 @@
+//    UTN
+//    FICA-CIERCOM
+//    HENRY LEMA
+//    23/10/2016
+//    REALIZAR 3 JUEGOS DE LUCES DIFERENTES
+ 
+//NUMEROS PARES: LOS LEDS SE ACTIVAN ASCENDENTEMENTE EN PARES Y REGRESA EN FORMA DESCENDENTE EN PARES
+//IZQUIERDA DERECHA: LOS LEDS SE ENCIENCDEN EN FORMA ASCENDENTE SE APAGAN Y REGRESAN ENCENDIDAS EN FORMA DESCENDENTE
+//MITAD: DESDE EL VETOR SE ENCIENDEN LOS LES ASCENDENTEMENTE Y LUEGO REGRESAAL MEDIO DONDE EMPIEZA DE NUEVO DESDE EL VECTOR 0
+
+int leds [14]={0,1,2,3,4,5,6,7,8,9,10,11,12,13}; //CREO UN VECTOR DE TAMAÑO 14
+int i;  // CREO UN CONTADOR
+
+void setup() {
+  pinMode(0,OUTPUT);        // SALIDA PIN 0
+  pinMode(1,OUTPUT);        // SALIDA PIN 1
+  pinMode(2,OUTPUT);        // SALIDA PIN 2
+  pinMode(3,OUTPUT);        // SALIDA PIN 3
+  pinMode(4,OUTPUT);        // SALIDA PIN 4
+  pinMode(5,OUTPUT);        // SALIDA PIN 5
+  pinMode(6,OUTPUT);        // SALIDA PIN 6
+  pinMode(7,OUTPUT);        // SALIDA PIN 7
+  pinMode(8,OUTPUT);        // SALIDA PIN 8
+  pinMode(9,OUTPUT);        // SALIDA PIN 9
+  pinMode(10,OUTPUT);       // SALIDA PIN 10
+  pinMode(11,OUTPUT);       // SALIDA PIN 11
+  pinMode(12,OUTPUT);       // SALIDA PIN 12
+  pinMode(13,OUTPUT);       // SALIDA PIN 13
+}
+void numerospares (){        //METODO
+  for(;i<14;i++){             //ORDEN ASCENDENTE 
+  digitalWrite(leds[i],HIGH);       //ACTIVA 5V EN LA POSICION
+  delay(200);                       //RETARDO
+  digitalWrite(leds[i],LOW);       // O V
+    delay(200);                    //RETARDO
+  i=i+1;                    //INCREMETA EN 1 PARA LOS NUMEROS PARES
+  }                                 
+    for(14;i>=0;i--){        //ORDEN DESCENDENTE
+    digitalWrite(leds[i],HIGH);   //ACTIVA 5V EN LA POSICION
+  delay(200);                     //RETARDO
+  digitalWrite(leds[i],LOW);      //
+    delay(200);                          //retardo
+  i=i-1;                   //DISMUNYE EN 1 PARA QUE SE REALIZE LA SECUENCIA
+  }
+}
+void izqder(){//codigo del juego1
+  for(i=0;i<14;i++){          //SE ENCIENDEN LOS LEDS DESDE LA POSICION 0 HASTA LA 14
+  digitalWrite(leds[i],HIGH); //ACTIVA LOS 5 VOLTIOS Y ENCIENDE EL LED
+  delay(100);                  // RETARDO
+  }
+
+  for(i=14;i>=1;i--){         //LOS LEDS SE APAGAN EN FORMA DESCENDENTE
+  digitalWrite(leds[i],LOW);   // ACTIVA LOS 5 VOLTIOS
+  delay(50);                  //RETARDO
+  } }
+
+void mitad(){
+   for(int i=6;i<=13;i++){              //DESPLAZAMIENTO A LA DERECHA DESDE LA 6TA POSICION
+   digitalWrite(leds[i],HIGH);          //ACTIVA 5 VOLTIOS EN LA POSICION DEL VECTOR
+   delay(200);                                 //TIEMPO DE RETARDO
+   digitalWrite(leds[i],LOW);           //SE ENCIENDE EL LED EN LA POSICION DEL VECTOR 
+   delay(200);                                 //RETARDO
+}
+for(int i=6;i>=0;i--){        //DESPLAZAMIENTO DESDE LA IZQUIERDA DESDE LA POSICION 6
+   digitalWrite(leds[i],HIGH);          //ACTIVA LOS 5 VOLTIOS EN LA POSICION
+   delay(200);                                 //TIEMPO DE RETARDO
+   digitalWrite(leds[i],LOW);           //NO PASA VOLTAJE
+   delay(200);                                 //RETARDO
+}
+}
+
+
+void loop() {
+numerospares();   // INVOCO EL METODO
+delay(500);       //TIEMPO DE RETARDO
+izqder();        // INVOCO EL METODO
+delay(500);      //TIEMPO DE RETARDO
+mitad();       // INVOCO EL METODO
+delay(500);    //TIEMPO DE RETARDO
+
+}
